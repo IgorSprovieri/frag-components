@@ -64,7 +64,9 @@ class FragComponent {
         }
 
         render() {
-          this.shadowRoot.innerHTML = component.html(this.props);
+          this.shadowRoot.innerHTML =
+            `<link rel="stylesheet" href="${component?.style}" />` +
+            component.html(this.props);
         }
 
         createScript(id) {

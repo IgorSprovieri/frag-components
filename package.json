@@ -1,0 +1,26 @@
+{
+  "name": "frag-components",
+  "version": "0.1.1",
+  "description": "Simple Library to create stylized and reusable web components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorSprovieri/frag-components.git"
+  },
+  "keywords": [
+    "components",
+    "web components",
+    "web fragments",
+    "frag",
+    "frag components"
+  ],
+  "author": "Igor Sprovieri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorSprovieri/frag-components/issues"
+  },
+  "homepage": "https://github.com/IgorSprovieri/frag-components#readme"
+}
