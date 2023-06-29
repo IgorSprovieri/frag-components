@@ -20,7 +20,7 @@ class FragComponent {
               throw new Error("Props must be only string lowercase");
             }
             if (prop.includes("on")) {
-              throw new Error("Props can not include 'on'");
+              throw new Error("Props can't includes 'on'");
             }
 
             props[index] = props[index].toString();
@@ -42,11 +42,17 @@ class FragComponent {
         }
 
         connectedCallback() {
-          const stringId = component.script();
+          const scriptExists = component.script;
+          if (scriptExists) {
+            const stringId = component?.script();
+            if (!stringId) {
+              throw new Error("Script require return a string unique id");
+            }
 
-          const alreadyExists = document.getElementById(stringId);
-          if (!alreadyExists) {
-            this.createScript(stringId);
+            const alreadyExists = document.getElementById(stringId);
+            if (!alreadyExists) {
+              this.createScript(stringId);
+            }
           }
 
           this.render();
