@@ -1,9 +1,12 @@
 class FragComponent {
   create(component) {
-    const name = component.constructor.name;
-
-    if (!name.match(/^[a-z]+$/)) {
-      throw new Error("Name must be only string lowercase");
+    const name = component?.name || component.constructor.name;
+    if (!name.match(/^[a-z]+(-[a-z]+)*$/)) {
+      throw new Error(
+        `Invalid component name: ${name}
+        \n- The name must be only lowercase
+        \n- The only special character accepted is -`
+      );
     }
 
     window.customElements.define(
@@ -16,11 +19,17 @@ class FragComponent {
           }
 
           props.forEach((prop, index) => {
-            if (!prop.match(/^[a-z]+$/)) {
-              throw new Error("Props must be only string lowercase");
-            }
-            if (prop.includes("on")) {
-              throw new Error("Props can't includes 'on'");
+            if (
+              !prop.match(/^[a-z]+$/) ||
+              prop.includes("on") ||
+              prop.length === 0
+            ) {
+              throw new Error(
+                `Invalid props name: ${prop}
+                \n- Props name accept only lowercase
+                \n- Props name can't include on
+                \n- Props name can't be ""`
+              );
             }
 
             props[index] = props[index].toString();
@@ -42,11 +51,13 @@ class FragComponent {
         }
 
         connectedCallback() {
-          const scriptExists = component.script;
+          const scriptExists = component?.script;
           if (scriptExists) {
             const stringId = component?.script();
             if (!stringId) {
-              throw new Error("Script require return a string unique id");
+              throw new Error(
+                `Script on component ${name} require to return a string unique id`
+              );
             }
 
             const alreadyExists = document.getElementById(stringId);
@@ -70,9 +81,20 @@ class FragComponent {
         }
 
         render() {
+          const innerHTML = component.html(this.props);
+          if (!this.validateHtml(innerHTML)) {
+            throw new Error(`Component ${name} don't return a valid Html`);
+          }
+
           this.shadowRoot.innerHTML =
-            `<link rel="stylesheet" href="${component?.style}" />` +
-            component.html(this.props);
+            `<link rel="stylesheet" href="${component?.style}" />` + innerHTML;
+        }
+
+        validateHtml(str) {
+          const doc = new DOMParser().parseFromString(str, "text/html");
+          return Array.from(doc.body.childNodes).some(
+            (node) => node.nodeType === 1
+          );
         }
 
         createScript(id) {
