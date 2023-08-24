@@ -48,6 +48,10 @@ class FragComponent {
           component.props.forEach((name) => {
             this.props[name] = this.getAttribute(name);
           });
+
+          if (component?.id) {
+            this.setAttribute("id", component.id);
+          }
         }
 
         connectedCallback() {
@@ -71,7 +75,9 @@ class FragComponent {
 
         attributeChangedCallback(name, oldValue, newValue) {
           this.props[name] = newValue;
-          this.shadowRoot.innerHTML = component.html(this.props);
+          this.shadowRoot.innerHTML =
+            `<link rel="stylesheet" href="${component?.style}" />` +
+            component.html(this.props);
         }
 
         disconnectedCallback() {

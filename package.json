@@ -1,6 +1,6 @@
 {
   "name": "frag-components",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "Simple Library to create stylized and reusable web components",
   "main": "index.js",
   "scripts": {
