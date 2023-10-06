@@ -1,5 +1,5 @@
 export const jsx = (tag, props, ...children) => {
-  if (typeof children[0][0] === "object") {
+  if (children && children.length > 0 && typeof children[0][0] === "object") {
     children = children[0];
   }
 
