@@ -1,4 +1,8 @@
 export const jsx = (tag, props, ...children) => {
+  if (typeof children[0][0] === "object") {
+    children = children[0];
+  }
+
   if (typeof tag === "string") {
     return { tag, props, children };
   }
