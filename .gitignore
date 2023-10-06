@@ -1,0 +1,5 @@
+node_modules
+dist
+.babelrc
+webpack.config.js
+test
