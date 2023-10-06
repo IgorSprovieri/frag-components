@@ -157,7 +157,3 @@ npm run build
 ```console
 npm run start
 ```
-
-9- See the Wiki to get examples and more infos:
-
-[Frag Components Wiki for contributors](https://github.com/IgorSprovieri/frag-components/wiki)
