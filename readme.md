@@ -34,11 +34,11 @@ Frag Components is a Open Source library and you can be a contributor
 
 1- See the Notion to know the nexts steps of the project:
 
-[Frag Componens Notion](https://www.notion.so/Frag-Components-89ec7ec975444117b1655304317c2d43?pvs=4)
+[Frag Components Notion](https://www.notion.so/Frag-Components-89ec7ec975444117b1655304317c2d43?pvs=4)
 
 2- Use the GitHub issues to report bugs and fixes:
 
-[Frag Componens Issues](https://github.com/IgorSprovieri/frag-components/issues)
+[Frag Components Issues](https://github.com/IgorSprovieri/frag-components/issues)
 
 ## Contributor Docs
 
