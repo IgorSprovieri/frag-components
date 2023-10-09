@@ -1,6 +1,6 @@
 {
   "name": "frag-components",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-beta.1",
   "description": "Perfect Library to create SPA (Single Page Applications)",
   "main": "index.js",
   "scripts": {
