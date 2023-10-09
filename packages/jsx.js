@@ -1,6 +1,10 @@
+const keyStack = [];
+
 export const jsx = (tag, props, ...children) => {
-  if (children && children.length > 0 && typeof children[0][0] === "object") {
-    children = children[0];
+  if (Array.isArray(children[0])) {
+    children = children[0].map((child) => {
+      return child;
+    });
   }
 
   if (typeof tag === "string") {
