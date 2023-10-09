@@ -30,7 +30,8 @@ class VirtualDOM {
 
     component?.children?.forEach((child) => {
       if (typeof child[0] === "string") {
-        return (element.innerHTML = child);
+        element.innerHTML = element.innerHTML + child;
+        return;
       }
 
       element.appendChild(this.createElement(child));
