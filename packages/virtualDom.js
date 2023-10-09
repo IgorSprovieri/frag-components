@@ -1,3 +1,5 @@
+import { cleanKeyStack } from "./jsx";
+
 class VirtualDOM {
   app;
   effectCallbacks = [];
@@ -48,6 +50,8 @@ class VirtualDOM {
     document.body.appendChild(this.createElement(app.render()));
 
     this.flushEffects();
+
+    cleanKeyStack();
   }
 
   reRender() {
@@ -65,6 +69,8 @@ class VirtualDOM {
     document.body.replaceChildren(this.createElement(this.app.render()));
 
     this.flushEffects();
+
+    cleanKeyStack();
 
     if (activeElementId) {
       const elementToRefocus = document.getElementById(activeElementId);
