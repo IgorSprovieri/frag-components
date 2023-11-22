@@ -135,15 +135,15 @@ module.exports = {
 ```js
 import { jsx, fragment, FragComponent, virtualDOM } from "../index";
 
-class Component extends FragComponent {
+class App extends FragComponent {
   render() {
     return <></>;
   }
 }
 
-const App = new Component();
+const Root = new App();
 
-virtualDOM.render(App);
+virtualDOM.render(Root);
 ```
 
 7- Build the project
